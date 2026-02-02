@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f5;
+      --warm: #e8dfd4;
+      --taupe: #6b5b52;
+      --moss: #4a5d4a;
+      --accent: #c17f59;
+      --text: #2c2520;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("images/flower_background.jpg") center / cover no-repeat;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 248, 245, 0.58);
+      z-index: -1;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      padding: 2rem 1.25rem 2rem 1.5rem;
+      border-right: 1px solid var(--warm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 1.5rem;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+
+    .nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav a {
+      display: block;
+      padding: 0.4rem 0;
+      color: var(--taupe);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .nav a.active {
+      color: var(--moss);
+      font-weight: 600;
+    }
+
+    .wrap {
+      flex: 1;
+      max-width: 900px;
+      padding: 2rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--warm);
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--taupe);
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .about-content {
+      font-size: 1.05rem;
+      color: var(--taupe);
+      max-width: 55ch;
+      margin-top: 1.5rem;
+    }
+
+    .about-content p {
+      margin: 0 0 1.25rem;
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .about-content a:hover {
+      text-decoration: underline;
+    }
+
+    .about-photo {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      margin: 1.5rem 0 2rem;
+      box-shadow: 0 4px 16px rgba(107, 91, 82, 0.15);
+      object-fit: cover;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--warm);
+      font-size: 0.9rem;
+      color: var(--taupe);
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--warm);
+        padding: 1.5rem 1.5rem 1rem;
+      }
+
+      .site-title {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="site-title">Melisande's happy knits</p>
+      <nav>
+        <ul class="nav">
+          <li><a href="my-knits.html">My knits</a></li>
+          <li><a href="index.html">Knitting wishlist</a></li>
+          <li><a href="about.html" class="active">About Me</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="wrap">
+      <header>
+        <h1>About Me</h1>
+        <p class="tagline">A bit about me and this blog</p>
+        <img class="about-photo" src="images/me.jpeg" alt="Melisande" />
+      </header>
+
+      <main class="about-content">
+        <p>
+          Hi, I’m Melisande! I started knitting a few months ago and it quickly became one of my favourite way to relax and make things I actually wear while expressing my creativity.
+        </p>
+        <p>
+          This site is where I keep my finished projects and a wishlist of patterns I’d like to try next. I love trying new techniques and always learning to improve my skills while making things I love ! You can contact me at melisande.allain@gmail.com
+        </p>
+        <p>
+          I hope you like it ! Thank you for stopping by !
+        </p>
+      </main>
+
+      <footer>
+        Melisande's happy knits – About Me
+      </footer>
+    </div>
+  </div>
+
+</body>
+</html>

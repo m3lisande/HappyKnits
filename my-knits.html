@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My knits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f5;
+      --warm: #e8dfd4;
+      --taupe: #6b5b52;
+      --moss: #4a5d4a;
+      --accent: #c17f59;
+      --text: #2c2520;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("images/flower_background.jpg") center / cover no-repeat;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 248, 245, 0.40);
+      z-index: -1;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      padding: 2rem 1.25rem 2rem 1.5rem;
+      border-right: 1px solid var(--warm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 1.5rem;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+
+    .nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav a {
+      display: block;
+      padding: 0.4rem 0;
+      color: var(--taupe);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .nav a.active {
+      color: var(--moss);
+      font-weight: 600;
+    }
+
+    .wrap {
+      flex: 1;
+      max-width: 900px;
+      padding: 2rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--warm);
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--taupe);
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--moss);
+      margin: 2.5rem 0 0.5rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: var(--taupe);
+      line-height: 1.6;
+      margin: 0 0 1rem;
+      max-width: 55ch;
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .collage .img-wrap {
+      position: relative;
+      display: block;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--warm);
+    }
+
+    .collage.col-1 .img-wrap {
+      height: auto;
+      max-width: 500px;
+    }
+
+    .collage .img-skeleton {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        var(--warm) 0%,
+        rgba(232, 223, 212, 0.8) 50%,
+        var(--warm) 100%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-shine 1.4s ease-in-out infinite;
+    }
+
+    @keyframes skeleton-shine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .collage .img-wrap.loaded .img-skeleton {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .collage .img-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 2px 8px rgba(107, 91, 82, 0.12);
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.25s ease;
+      z-index: 1;
+    }
+
+    .collage .img-skeleton {
+      z-index: 2;
+    }
+
+    .collage.col-1 .img-wrap img {
+      position: relative;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 37, 32, 0.85);
+      cursor: pointer;
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      z-index: 2;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: none;
+      border-radius: 50%;
+      background: rgba(250, 248, 245, 0.95);
+      color: var(--taupe);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      padding: 0;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .lightbox-close {
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.75rem;
+    }
+
+    .lightbox-prev {
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 600px) {
+      .lightbox-prev {
+        left: 0.5rem;
+      }
+      .lightbox-next {
+        right: 0.5rem;
+      }
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--warm);
+      font-size: 0.9rem;
+      color: var(--taupe);
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--warm);
+        padding: 1.5rem 1.5rem 1rem;
+      }
+
+      .site-title {
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      width: 2.75rem;
+      height: 2.75rem;
+      border: none;
+      border-radius: 50%;
+      background: rgba(250, 248, 245, 0.95);
+      color: var(--taupe);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(107, 91, 82, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease, background 0.2s, color 0.2s;
+      padding: 0;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .back-to-top:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="site-title">Melisande's happy knits</p>
+      <nav>
+        <ul class="nav">
+          <li><a href="my-knits.html" class="active">My knits</a></li>
+          <li><a href="index.html">Knitting wishlist</a></li>
+          <li><a href="about.html">About Me</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="wrap">
+      <header>
+        <h1>My knits</h1>
+        <p class="tagline">Projects I’ve made</p>
+      </header>
+
+      <main>
+        <section>
+          <h2>White Future Milf Sweater</h2>
+          <p class="section-text">My latest big project ! The pattern is the Future Milf sweater by <a href="https://www.instagram.com/kamillewenneberg.knit/">@kamillewenneberg.knit</a> in white Incawool by Hjertegarn.</p>
+          <div class="collage">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white1.JPG?v=2" alt="White knit 1" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white2.JPG?v=2" alt="White knit 2" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white3.JPG?v=2" alt="White knit 3" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Green Microwaves Tee</h2>
+          <p class="section-text">This was my first time doing raglan shaping and also trying out blocking, I love the result ! The pattern is the Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/">@eatyourfiberzz</a>. The yarn is Cloud Yarn by Lang Yarns in colorway 0016. </p>
+          <div class="collage">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green1.JPG?v=2" alt="Green knit 1" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green2.JPG?v=2" alt="Green knit 2" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green3.JPG?v=2" alt="Green knit 3" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Cloud Yarn Hood</h2>
+          <p class="section-text">A hooded piece I made with the rest of the Cloud Yarn I had left. I wear this all the time ! </p>
+          <div class="collage col-1">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/hood.JPG?v=2" alt="Hood knit" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Striped Mohair Sweater</h2>
+          <p class="section-text">This was my first time self drafting a pattern ! It did not turn out the way I had in my mind but I really like the result. The yarns are kid mohair (blue) and a mix of wool and acrylic (black). This is the project that also got me into continental knitting which I now love !</p>
+          <div class="collage">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/striped1.JPG?v=2" alt="Striped knit 1" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/striped2.JPG?v=2" alt="Striped knit 2" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Multicolor Microwaves Tee</h2>
+          <p class="section-text">Another Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/">@eatyourfiberzz</a> I made as a Christmas gift for my mother ! The yarn is MOSAIC by Lang Yarns in colorway 0001.</p>
+          <div class="collage">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/multicolor.JPG?v=2" alt="Multicolor knit" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/multicolor1.JPG?v=2" alt="Multicolor knit 1" /></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Pink Ginkgo Sweater</h2>
+          <p class="section-text">This was my very first knitting project and the one I learnt to knit with ! It holds a special place in my heart. The yarn is a cheap acrylic yarn. </p>
+          <div class="collage">
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/pink1.JPG?v=2" alt="Pink knit 1" /></div>
+            <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/pink2.JPG?v=2" alt="Pink knit 2" /></div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        Melisande's happy knits – My knits
+      </footer>
+    </div>
+  </div>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-prev" aria-label="Previous image">&lsaquo;</button>
+    <button type="button" class="lightbox-next" aria-label="Next image">&rsaquo;</button>
+    <div class="lightbox-backdrop" aria-hidden="true"></div>
+    <div class="lightbox-content">
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Skeleton: add .loaded when each image loads (or fails, so we don't stay stuck)
+      function markLoaded(wrap) {
+        if (wrap && !wrap.classList.contains('loaded')) wrap.classList.add('loaded');
+      }
+      document.querySelectorAll('.collage .img-wrap').forEach(function (wrap) {
+        var img = wrap.querySelector('img');
+        if (!img) return;
+        if (img.complete && img.naturalWidth > 0) {
+          markLoaded(wrap);
+        } else {
+          img.addEventListener('load', function () { markLoaded(wrap); });
+          img.addEventListener('error', function () { markLoaded(wrap); });
+        }
+      });
+      // Fallback: show images even if load/error never fire (e.g. slow or cached)
+      setTimeout(function () {
+        document.querySelectorAll('.collage .img-wrap:not(.loaded)').forEach(function (wrap) {
+          markLoaded(wrap);
+        });
+      }, 2500);
+
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = lightbox.querySelector('.lightbox-content img');
+      var btnClose = lightbox.querySelector('.lightbox-close');
+      var btnPrev = lightbox.querySelector('.lightbox-prev');
+      var btnNext = lightbox.querySelector('.lightbox-next');
+      var backdrop = lightbox.querySelector('.lightbox-backdrop');
+      var galleryImages = document.querySelectorAll('.collage img');
+      var currentIndex = 0;
+
+      function showImage(index) {
+        if (index < 0) index = galleryImages.length - 1;
+        if (index >= galleryImages.length) index = 0;
+        currentIndex = index;
+        var img = galleryImages[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      }
+
+      function openLightbox(index) {
+        currentIndex = index;
+        showImage(currentIndex);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', handleKeydown);
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleKeydown);
+      }
+
+      function handleKeydown(e) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') { e.preventDefault(); showImage(currentIndex - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); showImage(currentIndex + 1); }
+      }
+
+      galleryImages.forEach(function (img, i) {
+        img.addEventListener('click', function () { openLightbox(i); });
+      });
+
+      btnClose.addEventListener('click', closeLightbox);
+      backdrop.addEventListener('click', closeLightbox);
+      btnPrev.addEventListener('click', function (e) { e.stopPropagation(); showImage(currentIndex - 1); });
+      btnNext.addEventListener('click', function (e) { e.stopPropagation(); showImage(currentIndex + 1); });
+
+      // Back to top
+      var backToTop = document.getElementById('back-to-top');
+      function toggleBackToTop() {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('is-visible');
+        } else {
+          backToTop.classList.remove('is-visible');
+        }
+      }
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      window.addEventListener('scroll', toggleBackToTop);
+      backToTop.addEventListener('click', scrollToTop);
+      toggleBackToTop();
+    })();
+  </script>
+
+</body>
+</html>

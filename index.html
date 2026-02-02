@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Knitting wishlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f5;
+      --warm: #e8dfd4;
+      --taupe: #6b5b52;
+      --moss: #4a5d4a;
+      --accent: #c17f59;
+      --text: #2c2520;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("images/flower_background.jpg") center / cover no-repeat;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 248, 245, 0.58);
+      z-index: -1;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      padding: 2rem 1.25rem 2rem 1.5rem;
+      border-right: 1px solid var(--warm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 1.5rem;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+
+    .nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav a {
+      display: block;
+      padding: 0.4rem 0;
+      color: var(--taupe);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .nav a.active {
+      color: var(--moss);
+      font-weight: 600;
+    }
+
+    .wrap {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--warm);
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--taupe);
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--moss);
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: var(--taupe);
+      margin-bottom: 2rem;
+      max-width: 60ch;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: transparent;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project-card .instagram-media {
+      margin: 0 !important;
+      width: fit-content !important;
+      min-width: unset !important;
+      max-width: 100% !important;
+    }
+
+    /* Shrink Instagram embed wrapper to post size; beige shows behind */
+    .project-card iframe {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--warm);
+      font-size: 0.9rem;
+      color: var(--taupe);
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--warm);
+        padding: 1.5rem 1.5rem 1rem;
+      }
+
+      .site-title {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="site-title">Melisande's happy knits</p>
+      <nav>
+        <ul class="nav">
+          <li><a href="my-knits.html">My knits</a></li>
+          <li><a href="index.html" class="active">Knitting wishlist</a></li>
+          <li><a href="about.html">About Me</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="wrap">
+    <header>
+      <h1>Knitting wishlist</h1>
+      <p class="tagline">Projects I want to make next</p>
+    </header>
+
+    <main>
+      <h2>Projects I want to do next</h2>
+      <p class="intro">
+        A list of knitting projects that keep my awake at night ...
+      </p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTnjWBUFUaj/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTIcK_1jAWK/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSppEKnjJDx/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSiOg8jiAtM/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQ2Lb7MFDFR/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRUyRcmiNqi/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPy4YuQjZnH/" data-instgrm-version="14"></blockquote>
+        </div>
+        
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOgoOIZDATH/" data-instgrm-version="14"></blockquote>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Knitting wishlist – projects to make
+    </footer>
+    </div>
+  </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+
+</body>
+</html>
