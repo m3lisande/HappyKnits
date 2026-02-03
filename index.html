@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Knitting wishlist</title>
+  <title>Melisande's Happy Knits</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -15,23 +15,29 @@
       --moss: #4a5d4a;
       --accent: #c17f59;
       --text: #2c2520;
+      --pink: #e8a0b4;
+      --soft-blue: #7a9cc6;
+      --soft-green: #6b8e6b;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
     }
 
     body {
       font-family: "Source Sans 3", sans-serif;
       background: var(--cream);
       color: var(--text);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      position: relative;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    /* Background */
     body::before {
       content: "";
       position: fixed;
@@ -48,240 +54,542 @@
       z-index: -1;
     }
 
-    .layout {
-      display: flex;
+    /* Floating yarn balls */
+    .yarn-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .yarn-ball {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .yarn-ball::before {
+      content: '';
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      background: inherit;
+      filter: brightness(1.1);
+    }
+
+    .yarn-ball::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      width: 60%;
+      height: 30%;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: rotate(-20deg);
+    }
+
+    .yarn-ball:nth-child(1) {
+      width: 120px;
+      height: 120px;
+      background: var(--pink);
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .yarn-ball:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      background: var(--soft-blue);
+      top: 60%;
+      left: 10%;
+      animation-delay: -5s;
+      animation-duration: 22s;
+    }
+
+    .yarn-ball:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      background: var(--moss);
+      top: 20%;
+      right: 10%;
+      animation-delay: -10s;
+      animation-duration: 28s;
+    }
+
+    .yarn-ball:nth-child(4) {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      top: 70%;
+      right: 15%;
+      animation-delay: -3s;
+      animation-duration: 20s;
+    }
+
+    .yarn-ball:nth-child(5) {
+      width: 90px;
+      height: 90px;
+      background: var(--taupe);
+      bottom: 15%;
+      left: 30%;
+      animation-delay: -8s;
+      animation-duration: 24s;
+    }
+
+    .yarn-ball:nth-child(6) {
+      width: 70px;
+      height: 70px;
+      background: var(--pink);
+      top: 40%;
+      right: 25%;
+      animation-delay: -12s;
+      animation-duration: 26s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+      }
+      25% {
+        transform: translateY(-30px) rotate(5deg) scale(1.05);
+      }
+      50% {
+        transform: translateY(-15px) rotate(-3deg) scale(0.98);
+      }
+      75% {
+        transform: translateY(-40px) rotate(3deg) scale(1.02);
+      }
+    }
+
+    /* Knitting needle decorations */
+    .needle {
+      position: fixed;
+      width: 4px;
+      height: 200px;
+      background: linear-gradient(to bottom, #d4a574, #8b6914);
+      border-radius: 2px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .needle::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background: linear-gradient(135deg, #d4a574, #8b6914);
+      border-radius: 50%;
+    }
+
+    .needle:nth-child(1) {
+      top: 5%;
+      left: 15%;
+      transform: rotate(25deg);
+      animation: needleSway 8s ease-in-out infinite;
+    }
+
+    .needle:nth-child(2) {
+      bottom: 10%;
+      right: 12%;
+      transform: rotate(-30deg);
+      animation: needleSway 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes needleSway {
+      0%, 100% { transform: rotate(25deg); }
+      50% { transform: rotate(35deg); }
+    }
+
+    /* Main content */
+    .container {
       min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 200px;
-      flex-shrink: 0;
-      padding: 2rem 1.25rem 2rem 1.5rem;
-      border-right: 1px solid var(--warm);
-      position: relative;
-      z-index: 1;
-    }
-
-    .site-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--taupe);
-      margin: 0 0 1.5rem;
-      line-height: 1.3;
-      letter-spacing: 0.02em;
-    }
-
-    .nav {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav li {
-      margin-bottom: 0.5rem;
-    }
-
-    .nav a {
-      display: block;
-      padding: 0.4rem 0;
-      color: var(--taupe);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav a:hover {
-      color: var(--accent);
-    }
-
-    .nav a.active {
-      color: var(--moss);
-      font-weight: 600;
-    }
-
-    .wrap {
-      flex: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    header {
-      text-align: center;
-      padding: 3rem 0 2.5rem;
-      border-bottom: 1px solid var(--warm);
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 600;
-      color: var(--taupe);
-      margin: 0 0 0.5rem;
-      letter-spacing: 0.02em;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: var(--taupe);
-      opacity: 0.9;
-      font-weight: 400;
-    }
-
-    h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--moss);
-      margin: 3rem 0 1.5rem;
-      padding-bottom: 0.5rem;
-    }
-
-    .intro {
-      font-size: 1.05rem;
-      color: var(--taupe);
-      margin-bottom: 2rem;
-      max-width: 60ch;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .project-card {
-      background: transparent;
-      max-width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .project-card .instagram-media {
-      margin: 0 !important;
-      width: fit-content !important;
-      min-width: unset !important;
-      max-width: 100% !important;
-    }
-
-    /* Shrink Instagram embed wrapper to post size; beige shows behind */
-    .project-card iframe {
-      display: block;
-    }
-
-    footer {
+      justify-content: center;
+      padding: 2rem;
       text-align: center;
-      padding: 3rem 0 1rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--warm);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Title animation */
+    .logo {
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInDown 1s ease-out 0.3s forwards;
+    }
+
+    .title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 600;
+      color: var(--taupe);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .title span {
+      display: inline-block;
+      opacity: 0;
+      animation: letterPop 0.5s ease-out forwards;
+    }
+
+    .subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--moss);
+      opacity: 0;
+      animation: fadeIn 1s ease-out 1.5s forwards;
+      margin-bottom: 3rem;
+    }
+
+    /* Decorative line */
+    .line-decoration {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: expandLine 1s ease-out 1.8s forwards;
+    }
+
+    @keyframes expandLine {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 100px;
+        opacity: 1;
+      }
+    }
+
+    /* Navigation cards */
+    .nav-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 900px;
+    }
+
+    .nav-card {
+      position: relative;
+      width: 240px;
+      padding: 2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--warm);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      opacity: 0;
+      transform: translateY(30px);
+      overflow: hidden;
+    }
+
+    .nav-card:nth-child(1) { animation: cardSlideUp 0.6s ease-out 2s forwards; }
+    .nav-card:nth-child(2) { animation: cardSlideUp 0.6s ease-out 2.2s forwards; }
+    .nav-card:nth-child(3) { animation: cardSlideUp 0.6s ease-out 2.4s forwards; }
+
+    @keyframes cardSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(107, 91, 82, 0.15);
+      border-color: var(--accent);
+    }
+
+    .nav-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-card:hover .card-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .card-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--taupe);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
       font-size: 0.9rem;
       color: var(--taupe);
+      opacity: 0.8;
+      line-height: 1.5;
     }
 
-    @media (max-width: 900px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* Yarn trail animation on hover */
+    .yarn-trail {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .nav-card:nth-child(1) .yarn-trail { background: var(--pink); }
+    .nav-card:nth-child(2) .yarn-trail { background: var(--moss); }
+    .nav-card:nth-child(3) .yarn-trail { background: var(--soft-blue); }
+
+    .nav-card:hover .yarn-trail {
+      opacity: 0.3;
+      bottom: 10px;
+      transform: translateX(-50%) scale(2);
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--taupe);
+      opacity: 0;
+      animation: fadeIn 1s ease-out 3s forwards;
+      z-index: 1;
+    }
+
+    .footer span {
+      opacity: 0.7;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 600px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes letterPop {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
     }
 
+    /* Responsive */
     @media (max-width: 700px) {
-      .layout {
+      .nav-cards {
         flex-direction: column;
+        align-items: center;
       }
 
-      .sidebar {
+      .nav-card {
         width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--warm);
-        padding: 1.5rem 1.5rem 1rem;
+        max-width: 300px;
       }
 
-      .site-title {
-        margin-bottom: 1rem;
+      .yarn-ball {
+        opacity: 0.1;
+      }
+
+      .needle {
+        display: none;
+      }
+    }
+
+    /* Sparkle effect */
+    .sparkle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0);
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="layout">
-    <aside class="sidebar">
-      <p class="site-title">Melisande's happy knits</p>
-      <nav>
-        <ul class="nav">
-          <li><a href="my-knits.html">My knits</a></li>
-          <li><a href="index.html" class="active">Knitting wishlist</a></li>
-          <li><a href="about.html">About Me</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <div class="wrap">
-    <header>
-      <h1>Knitting wishlist</h1>
-      <p class="tagline">Projects I want to make next</p>
-    </header>
-
-    <main>
-      <h2>Projects I want to do next</h2>
-      <p class="intro">
-        A list of knitting projects that keep my awake at night ...
-      </p>
-
-      <div class="projects-grid">
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTnjWBUFUaj/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTIcK_1jAWK/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSppEKnjJDx/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSiOg8jiAtM/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQ2Lb7MFDFR/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRUyRcmiNqi/" data-instgrm-version="14"></blockquote>
-        </div>
-
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPy4YuQjZnH/" data-instgrm-version="14"></blockquote>
-        </div>
-        
-        <div class="project-card">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOgoOIZDATH/" data-instgrm-version="14"></blockquote>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      Knitting wishlist – projects to make
-    </footer>
-    </div>
+  <!-- Floating yarn balls -->
+  <div class="yarn-container">
+    <div class="yarn-ball"></div>
+    <div class="yarn-ball"></div>
+    <div class="yarn-ball"></div>
+    <div class="yarn-ball"></div>
+    <div class="yarn-ball"></div>
+    <div class="yarn-ball"></div>
   </div>
 
-  <script async src="//www.instagram.com/embed.js"></script>
+  <!-- Knitting needles -->
+  <div class="needle"></div>
+  <div class="needle"></div>
 
+  <div class="container">
+    <div class="logo">
+      <h1 class="title" id="title"></h1>
+    </div>
+    
+    <p class="subtitle">Handmade with love, one stitch at a time</p>
+    
+    <div class="line-decoration"></div>
+
+    <nav class="nav-cards">
+      <a href="my-knits.html" class="nav-card">
+        <span class="card-icon">🧶</span>
+        <h2 class="card-title">My Knits</h2>
+        <p class="card-desc">Browse the projects I've lovingly crafted</p>
+        <div class="yarn-trail"></div>
+      </a>
+
+      <a href="wishlist.html" class="nav-card">
+        <span class="card-icon">✨</span>
+        <h2 class="card-title">Wishlist</h2>
+        <p class="card-desc">Patterns and projects I dream of making</p>
+        <div class="yarn-trail"></div>
+      </a>
+
+      <a href="about.html" class="nav-card">
+        <span class="card-icon">💝</span>
+        <h2 class="card-title">About Me</h2>
+        <p class="card-desc">The knitter behind the needles</p>
+        <div class="yarn-trail"></div>
+      </a>
+    </nav>
+  </div>
+
+  <footer class="footer">
+    <span>Made with yarn and a whole lot of patience</span>
+  </footer>
+
+  <script>
+    // Animated title letters
+    (function() {
+      var title = "Melisande's Happy Knits";
+      var titleEl = document.getElementById('title');
+      var html = '';
+      
+      for (var i = 0; i < title.length; i++) {
+        var char = title[i] === ' ' ? '&nbsp;' : title[i];
+        var delay = 0.8 + (i * 0.05);
+        html += '<span style="animation-delay: ' + delay + 's">' + char + '</span>';
+      }
+      
+      titleEl.innerHTML = html;
+    })();
+
+    // Mouse sparkle effect
+    (function() {
+      var lastSparkle = 0;
+      var sparkleDelay = 100;
+
+      document.addEventListener('mousemove', function(e) {
+        var now = Date.now();
+        if (now - lastSparkle < sparkleDelay) return;
+        lastSparkle = now;
+
+        // Only create sparkle 30% of the time for subtlety
+        if (Math.random() > 0.3) return;
+
+        var sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        sparkle.style.animation = 'sparkle 0.6s ease-out forwards';
+        
+        document.body.appendChild(sparkle);
+
+        setTimeout(function() {
+          sparkle.remove();
+        }, 600);
+      });
+    })();
+
+    // Parallax effect on yarn balls
+    (function() {
+      var yarnBalls = document.querySelectorAll('.yarn-ball');
+      
+      document.addEventListener('mousemove', function(e) {
+        var x = (e.clientX / window.innerWidth - 0.5) * 2;
+        var y = (e.clientY / window.innerHeight - 0.5) * 2;
+        
+        yarnBalls.forEach(function(ball, i) {
+          var speed = (i + 1) * 5;
+          var translateX = x * speed;
+          var translateY = y * speed;
+          ball.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px)';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

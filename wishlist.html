@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Me</title>
+  <title>Knitting wishlist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -113,14 +113,16 @@
 
     .wrap {
       flex: 1;
-      max-width: 900px;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
       position: relative;
       z-index: 1;
     }
 
     header {
-      padding-bottom: 2rem;
+      text-align: center;
+      padding: 3rem 0 2.5rem;
       border-bottom: 1px solid var(--warm);
     }
 
@@ -137,90 +139,71 @@
       font-size: 1rem;
       color: var(--taupe);
       opacity: 0.9;
-      margin: 0;
+      font-weight: 400;
     }
 
-    .about-content {
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--moss);
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .intro {
       font-size: 1.05rem;
       color: var(--taupe);
-      max-width: 55ch;
-      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 60ch;
     }
 
-    .about-content p {
-      margin: 0 0 1.25rem;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .about-content p:last-child {
-      margin-bottom: 0;
+    .project-card {
+      background: transparent;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .about-content a {
-      color: var(--accent);
-      text-decoration: none;
+    .project-card .instagram-media {
+      margin: 0 !important;
+      width: fit-content !important;
+      min-width: unset !important;
+      max-width: 100% !important;
     }
 
-    .about-content a:hover {
-      text-decoration: underline;
-    }
-
-    .about-photo {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      border-radius: 12px;
+    /* Shrink Instagram embed wrapper to post size; beige shows behind */
+    .project-card iframe {
       display: block;
-      margin: 1.5rem 0 2rem;
-      box-shadow: 0 4px 16px rgba(107, 91, 82, 0.15);
-      object-fit: cover;
     }
 
     footer {
+      text-align: center;
+      padding: 3rem 0 1rem;
       margin-top: 3rem;
-      padding-top: 1.5rem;
       border-top: 1px solid var(--warm);
       font-size: 0.9rem;
       color: var(--taupe);
     }
 
-    .write-me {
-      margin-top: 2.5rem;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      border: 1px solid var(--warm);
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .write-me h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--taupe);
-      margin: 0 0 1rem;
-    }
-
-    .write-me p {
-      font-size: 1rem;
-      color: var(--taupe);
-      margin: 0 0 1.25rem;
-      max-width: 50ch;
-    }
-
-    .write-me-btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--moss);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .write-me-btn:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
@@ -249,44 +232,66 @@
       <nav>
         <ul class="nav">
           <li><a href="my-knits.html">My knits</a></li>
-          <li><a href="wishlist.html">Knitting wishlist</a></li>
-          <li><a href="about.html" class="active">About Me</a></li>
+          <li><a href="wishlist.html" class="active">Knitting wishlist</a></li>
+          <li><a href="about.html">About Me</a></li>
         </ul>
       </nav>
     </aside>
 
     <div class="wrap">
-      <header>
-        <h1>About Me</h1>
-        <p class="tagline">A bit about me and this blog</p>
-        <img class="about-photo" src="images/me.jpeg" alt="Melisande" />
-      </header>
+    <header>
+      <h1>Knitting wishlist</h1>
+      <p class="tagline">Projects I want to make next</p>
+    </header>
 
-      <main class="about-content">
-        <p>
-          Hi, I’m Melisande! I started knitting a few months ago and it quickly became one of my favourite way to relax and make things I actually wear while expressing my creativity.
-        </p>
-        <p>
-          This site is where I keep my finished projects and a wishlist of patterns I’d like to try next. I love trying new techniques and always learning to improve my skills while making things I love ! 
-        </p>
-        <p>
-          I hope you like it ! Thank you for stopping by !
-        </p>
-      </main>
+    <main>
+      <h2>Projects I want to do next</h2>
+      <p class="intro">
+        A list of knitting projects that keep my awake at night ...
+      </p>
 
-      <section class="write-me">
-        <h2>Write Me</h2>
-        <p>
-          Have a question about a pattern, want to share your own knitting projects, or just want to say hello? I'd love to hear from you! Click below to send me a message.
-        </p>
-        <a class="write-me-btn" href="mailto:melisande.allain@gmail.com?subject=Hello from Happy Knits!">Send me a message</a>
-      </section>
+      <div class="projects-grid">
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTnjWBUFUaj/" data-instgrm-version="14"></blockquote>
+        </div>
 
-      <footer>
-        Melisande's happy knits – About Me
-      </footer>
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTIcK_1jAWK/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSppEKnjJDx/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSiOg8jiAtM/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQ2Lb7MFDFR/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRUyRcmiNqi/" data-instgrm-version="14"></blockquote>
+        </div>
+
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPy4YuQjZnH/" data-instgrm-version="14"></blockquote>
+        </div>
+        
+        <div class="project-card">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOgoOIZDATH/" data-instgrm-version="14"></blockquote>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Knitting wishlist – projects to make
+    </footer>
     </div>
   </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
