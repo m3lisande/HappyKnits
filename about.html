@@ -173,6 +173,46 @@
       color: var(--taupe);
     }
 
+    .write-me {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      border: 1px solid var(--warm);
+    }
+
+    .write-me h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--taupe);
+      margin: 0 0 1rem;
+    }
+
+    .write-me p {
+      font-size: 1rem;
+      color: var(--taupe);
+      margin: 0 0 1.25rem;
+      max-width: 50ch;
+    }
+
+    .write-me-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--moss);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .write-me-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 700px) {
       .layout {
         flex-direction: column;
@@ -217,12 +257,20 @@
           Hi, I’m Melisande! I started knitting a few months ago and it quickly became one of my favourite way to relax and make things I actually wear while expressing my creativity.
         </p>
         <p>
-          This site is where I keep my finished projects and a wishlist of patterns I’d like to try next. I love trying new techniques and always learning to improve my skills while making things I love ! You can contact me at melisande.allain@gmail.com
+          This site is where I keep my finished projects and a wishlist of patterns I’d like to try next. I love trying new techniques and always learning to improve my skills while making things I love ! 
         </p>
         <p>
           I hope you like it ! Thank you for stopping by !
         </p>
       </main>
+
+      <section class="write-me">
+        <h2>Write Me</h2>
+        <p>
+          Have a question about a pattern, want to share your own knitting projects, or just want to say hello? I'd love to hear from you! Click below to send me a message.
+        </p>
+        <a class="write-me-btn" href="mailto:melisande.allain@gmail.com?subject=Hello from Happy Knits!">Send me a message</a>
+      </section>
 
       <footer>
         Melisande's happy knits – About Me

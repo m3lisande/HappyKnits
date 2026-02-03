@@ -383,6 +383,486 @@
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
+
+    /* Tag Filter Styles */
+    .filter-bar {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      padding: 1rem 0;
+    }
+
+    .filter-label {
+      font-size: 0.9rem;
+      color: var(--taupe);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .filter-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-group {
+      position: relative;
+    }
+
+    .filter-group-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--taupe);
+      background: rgba(232, 223, 212, 0.6);
+      border: 1px solid var(--warm);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-group-toggle:hover {
+      background: var(--warm);
+      border-color: var(--taupe);
+    }
+
+    .filter-group-toggle.is-open {
+      background: var(--taupe);
+      color: #fff;
+      border-color: var(--taupe);
+    }
+
+    .filter-group-toggle .arrow {
+      font-size: 0.7em;
+      transition: transform 0.2s;
+    }
+
+    .filter-group-toggle.is-open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .filter-group-toggle .active-count {
+      background: var(--moss);
+      color: #fff;
+      font-size: 0.75em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 10px;
+      margin-left: 0.25rem;
+    }
+
+    .filter-group-toggle.is-open .active-count {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .filter-dropdown {
+      position: absolute;
+      top: calc(100% + 0.35rem);
+      left: 0;
+      z-index: 20;
+      min-width: 140px;
+      padding: 0.5rem;
+      background: rgba(250, 248, 245, 0.98);
+      border: 1px solid var(--warm);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(107, 91, 82, 0.15);
+      display: none;
+    }
+
+    .filter-dropdown.is-open {
+      display: block;
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .filter-tags .filter-tag {
+      width: 100%;
+      text-align: left;
+      border-radius: 8px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--warm);
+    }
+
+    @media (max-width: 500px) {
+      .filter-groups {
+        gap: 0.4rem;
+      }
+      .filter-group-toggle {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Color swatches */
+    .color-swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+      border: 1px solid rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .color-swatch.white { background: #f5f5f5; }
+    .color-swatch.black { background: #2c2520; }
+    .color-swatch.pink { background: #e8a0b4; }
+    .color-swatch.green { background: #6b8e6b; }
+    .color-swatch.blue { background: #7a9cc6; }
+    .color-swatch.yellow { background: #f5d76e; }
+    .color-swatch.orange { background: #e8a05c; }
+    .color-swatch.purple { background: #9c7bb8; }
+    .color-swatch.multicolor { 
+      background: linear-gradient(135deg, #e8a0b4 0%, #f5d76e 25%, #6b8e6b 50%, #7a9cc6 75%, #b088d4 100%);
+    }
+    .color-swatch.striped {
+      background: repeating-linear-gradient(
+        45deg,
+        #2c2520,
+        #2c2520 3px,
+        #7a9cc6 3px,
+        #7a9cc6 6px
+      );
+    }
+
+    .filter-tag .color-swatch {
+      margin-right: 0.35rem;
+    }
+
+    /* Project Details Subsection */
+    .project-info {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 10px;
+      border: 1px solid var(--warm);
+      font-size: 0.88rem;
+    }
+
+    .project-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+    }
+
+    .project-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .project-detail-label {
+      font-weight: 600;
+      color: var(--moss);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .project-detail-value {
+      color: var(--taupe);
+    }
+
+    /* Pattern link section */
+    .pattern-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.65rem;
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--warm);
+    }
+
+    .pattern-info {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pattern-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      background: var(--moss);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .pattern-btn:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .pattern-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .project-info {
+        padding: 0.7rem 0.75rem;
+        font-size: 0.82rem;
+      }
+      .project-details {
+        gap: 0.4rem 1rem;
+      }
+      .pattern-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    .filter-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--taupe);
+      background: rgba(232, 223, 212, 0.6);
+      border: 1px solid var(--warm);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-tag:hover {
+      background: var(--warm);
+      border-color: var(--taupe);
+    }
+
+    .filter-tag.active {
+      background: var(--moss);
+      color: #fff;
+      border-color: var(--moss);
+    }
+
+    .filter-tag.active:hover {
+      background: #3d4d3d;
+      border-color: #3d4d3d;
+    }
+
+    .filter-clear {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: transparent;
+      border: 1px dashed var(--accent);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-clear:hover {
+      background: rgba(193, 127, 89, 0.1);
+    }
+
+    .filter-clear:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .filter-status {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--taupe);
+      opacity: 0.8;
+    }
+
+    /* Project Tags */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--moss);
+      background: rgba(74, 93, 74, 0.12);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .project-tag:hover {
+      background: rgba(74, 93, 74, 0.25);
+    }
+
+    /* Section visibility for filtering */
+    section.knit-project {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    section.knit-project.hidden {
+      display: none;
+    }
+
+    section.knit-project h2 {
+      margin-top: 0.5rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--taupe);
+    }
+
+    .no-results p {
+      font-size: 1.1rem;
+      margin: 0 0 1rem;
+    }
+
+    .no-results button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .no-results button:hover {
+      background: #a86c4a;
+    }
+
+    /* Favorites System */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .fav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      font-size: 1.6rem;
+      line-height: 1;
+      color: var(--taupe);
+      opacity: 0.5;
+      transition: color 0.2s, transform 0.15s, opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .fav-btn:hover {
+      transform: scale(1.2);
+      color: #e07070;
+      opacity: 1;
+    }
+
+    .fav-btn.is-fav {
+      color: #e25555;
+      opacity: 1;
+    }
+
+    .fav-btn.is-fav:hover {
+      color: #c94444;
+    }
+
+    .fav-btn:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Favorites filter button */
+    .filter-tag.fav-filter {
+      gap: 0.35rem;
+    }
+
+    .filter-tag.fav-filter .heart-icon {
+      color: #e25555;
+      font-size: 0.9em;
+    }
+
+    .filter-tag.fav-filter.active .heart-icon {
+      color: #fff;
+    }
+
+    .fav-count {
+      font-size: 0.8em;
+      opacity: 0.8;
+    }
+
+    /* Animated Stats Section */
+    .stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem 1rem;
+      margin: 1.5rem 0 0;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      border: 1px solid var(--warm);
+    }
+
+    .stat-item {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .stat-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--moss);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--taupe);
+      text-transform: lowercase;
+    }
+
+    @media (max-width: 500px) {
+      .stats-section {
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .stat-item {
+        min-width: 60px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -402,64 +882,381 @@
     <div class="wrap">
       <header>
         <h1>My knits</h1>
-        <p class="tagline">Projects I’ve made</p>
+        <p class="tagline">Projects I've made</p>
       </header>
 
-      <main>
-        <section>
-          <h2>White Future Milf Sweater</h2>
-          <p class="section-text">My latest big project ! The pattern is the Future Milf sweater by <a href="https://www.instagram.com/kamillewenneberg.knit/">@kamillewenneberg.knit</a> in white Incawool by Hjertegarn.</p>
+      <!-- Animated Stats Section -->
+      <div class="stats-section" id="stats-section">
+        <div class="stat-item">
+          <div class="stat-number" data-target="6" id="stat-projects">0</div>
+          <div class="stat-label">projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="3" id="stat-sweaters">0</div>
+          <div class="stat-label">sweaters</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2" id="stat-tees">0</div>
+          <div class="stat-label">tees</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="1" id="stat-accessories">0</div>
+          <div class="stat-label">accessory</div>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <p class="filter-label">Filter by:</p>
+        
+        <!-- Favorites and Clear row -->
+        <div class="filter-row">
+          <button type="button" class="filter-tag fav-filter" data-tag="favorites" id="fav-filter"><span class="heart-icon">&#9829;</span> Favorites <span class="fav-count" id="fav-count">(0)</span></button>
+          <button type="button" class="filter-clear" id="clear-filters" disabled>Clear all</button>
+        </div>
+
+        <div class="filter-groups">
+          <!-- Type -->
+          <div class="filter-group" data-group="type">
+            <button type="button" class="filter-group-toggle">Type <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="sweater">sweater</button>
+                <button type="button" class="filter-tag" data-tag="tee">tee</button>
+                <button type="button" class="filter-tag" data-tag="accessory">accessory</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Difficulty -->
+          <div class="filter-group" data-group="difficulty">
+            <button type="button" class="filter-group-toggle">Difficulty <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="first time">first time</button>
+                <button type="button" class="filter-tag" data-tag="intermediate">intermediate</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pattern -->
+          <div class="filter-group" data-group="pattern">
+            <button type="button" class="filter-group-toggle">Pattern <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="pattern">pattern</button>
+                <button type="button" class="filter-tag" data-tag="self-drafted">self-drafted</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color -->
+          <div class="filter-group" data-group="color">
+            <button type="button" class="filter-group-toggle">Color <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="white"><span class="color-swatch white"></span>white</button>
+                <button type="button" class="filter-tag" data-tag="black"><span class="color-swatch black"></span>black</button>
+                <button type="button" class="filter-tag" data-tag="pink"><span class="color-swatch pink"></span>pink</button>
+                <button type="button" class="filter-tag" data-tag="green"><span class="color-swatch green"></span>green</button>
+                <button type="button" class="filter-tag" data-tag="blue"><span class="color-swatch blue"></span>blue</button>
+                <button type="button" class="filter-tag" data-tag="yellow"><span class="color-swatch yellow"></span>yellow</button>
+                <button type="button" class="filter-tag" data-tag="orange"><span class="color-swatch orange"></span>orange</button>
+                <button type="button" class="filter-tag" data-tag="purple"><span class="color-swatch purple"></span>purple</button>
+                <button type="button" class="filter-tag" data-tag="multicolor"><span class="color-swatch multicolor"></span>multicolor</button>
+                <button type="button" class="filter-tag" data-tag="striped"><span class="color-swatch striped"></span>striped</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yarn -->
+          <div class="filter-group" data-group="yarn">
+            <button type="button" class="filter-group-toggle">Yarn <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="mohair">mohair</button>
+                <button type="button" class="filter-tag" data-tag="wool">wool</button>
+                <button type="button" class="filter-tag" data-tag="acrylic">acrylic</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yarn Weight -->
+          <div class="filter-group" data-group="weight">
+            <button type="button" class="filter-group-toggle">Weight <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="dk">DK</button>
+                <button type="button" class="filter-tag" data-tag="aran">aran</button>
+                <button type="button" class="filter-tag" data-tag="chunky">chunky</button>
+                <button type="button" class="filter-tag" data-tag="bulky">bulky</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Knit Time -->
+          <div class="filter-group" data-group="time">
+            <button type="button" class="filter-group-toggle">Time <span class="arrow">▼</span></button>
+            <div class="filter-dropdown">
+              <div class="filter-tags">
+                <button type="button" class="filter-tag" data-tag="quick">quick</button>
+                <button type="button" class="filter-tag" data-tag="medium">medium</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="filter-status" id="filter-status">Showing all 6 projects</p>
+      </div>
+
+      <main id="projects-container">
+        <!-- White Future Milf Sweater -->
+        <section class="knit-project" data-tags="sweater,intermediate,pattern,white,wool,aran,medium" data-project-id="white-sweater">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="sweater">sweater</span>
+            <span class="project-tag" data-tag="intermediate">intermediate</span>
+            <span class="project-tag" data-tag="pattern">pattern</span>
+            <span class="project-tag" data-tag="white">white</span>
+            <span class="project-tag" data-tag="wool">wool</span>
+            <span class="project-tag" data-tag="aran">aran</span>
+            <span class="project-tag" data-tag="medium">medium</span>
+          </div>
+          <div class="section-header">
+            <h2>White Future Milf Sweater</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
+          <p class="section-text">My latest big project ! The pattern is by <a href="https://www.instagram.com/kamillewenneberg.knit/" target="_blank">@kamillewenneberg.knit</a>. This was my favorite project with a super comfy yarn and a model I could wear every day!</p>
           <div class="collage">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white1.JPG?v=2" alt="White knit 1" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white2.JPG?v=2" alt="White knit 2" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/white3.JPG?v=2" alt="White knit 3" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">Incawool by Hjertegarn</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">Intermediate</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">6 weeks</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">Aran / Worsted</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Future Milf Sweater</span>
+              </div>
+              <a href="https://kamillewenneberg.com/products/future-milf-hooded-knit?variant=47240554938715" target="_blank" class="pattern-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd"/></svg>
+                See Pattern
+              </a>
+            </div>
+          </div>
+
         </section>
 
-        <section>
-          <h2>Green Microwaves Tee</h2>
-          <p class="section-text">This was my first time doing raglan shaping and also trying out blocking, I love the result ! The pattern is the Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/">@eatyourfiberzz</a>. The yarn is Cloud Yarn by Lang Yarns in colorway 0016. </p>
+        <!-- Green Microwaves Tee -->
+        <section class="knit-project" data-tags="tee,first time,pattern,green,wool,chunky,medium" data-project-id="green-tee">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="tee">tee</span>
+            <span class="project-tag" data-tag="first time">first time</span>
+            <span class="project-tag" data-tag="pattern">pattern</span>
+            <span class="project-tag" data-tag="green">green</span>
+            <span class="project-tag" data-tag="wool">wool</span>
+            <span class="project-tag" data-tag="chunky">chunky</span>
+            <span class="project-tag" data-tag="medium">medium</span>
+          </div>
+          <div class="section-header">
+            <h2>Green Microwaves Tee</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
+          <p class="section-text">This was my first time doing raglan shaping and also trying out blocking, I love the result ! The pattern is the Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/" target="_blank">@eatyourfiberzz</a>. </p>
           <div class="collage">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green1.JPG?v=2" alt="Green knit 1" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green2.JPG?v=2" alt="Green knit 2" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/green3.JPG?v=2" alt="Green knit 3" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">Cloud Yarn by Lang Yarns (colorway 00016)</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">First time</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">3 weeks</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">Chunky / Heavy Worsted</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Microwaves Tee</span>
+              </div>
+              <a href="https://www.ravelry.com/patterns/library/microwaves-tee" target="_blank" class="pattern-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd"/></svg>
+                See Pattern
+              </a>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2>Cloud Yarn Hood</h2>
+        <!-- Cloud Yarn Hood -->
+        <section class="knit-project" data-tags="accessory,green,pattern,wool,chunky,quick" data-project-id="cloud-hood">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="accessory">accessory</span>
+            <span class="project-tag" data-tag="pattern">pattern</span>
+            <span class="project-tag" data-tag="green">green</span>
+            <span class="project-tag" data-tag="wool">wool</span>
+            <span class="project-tag" data-tag="chunky">chunky</span>
+            <span class="project-tag" data-tag="quick">quick</span>
+          </div>
+          <div class="section-header">
+            <h2>Cloud Yarn Hood</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
           <p class="section-text">A hooded piece I made with the rest of the Cloud Yarn I had left. I wear this all the time ! </p>
           <div class="collage col-1">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/hood.JPG?v=2" alt="Hood knit" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">Cloud Yarn by Lang Yarns (colorway 00016)</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">First time</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">1 week</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">Chunky / Heavy worsted</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Hooded Cowl</span>
+              </div>
+              <a href="https://crazyhands.net/hooded-cowl-knitting-pattern/" target="_blank" class="pattern-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd"/></svg>
+                See Pattern
+              </a>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2>Striped Mohair Sweater</h2>
+        <!-- Striped Mohair Sweater -->
+        <section class="knit-project" data-tags="sweater,first time,self-drafted,striped,blue,black,mohair,acrylic,dk,medium" data-project-id="striped-sweater">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="sweater">sweater</span>
+            <span class="project-tag" data-tag="first time">first time</span>
+            <span class="project-tag" data-tag="self-drafted">self-drafted</span>
+            <span class="project-tag" data-tag="striped">striped</span>
+            <span class="project-tag" data-tag="blue">blue</span>
+            <span class="project-tag" data-tag="black">black</span>
+            <span class="project-tag" data-tag="mohair">mohair</span>
+            <span class="project-tag" data-tag="acrylic">acrylic</span>
+            <span class="project-tag" data-tag="dk">DK</span>
+            <span class="project-tag" data-tag="medium">medium</span>
+          </div>
+          <div class="section-header">
+            <h2>Striped Mohair Sweater</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
           <p class="section-text">This was my first time self drafting a pattern ! It did not turn out the way I had in my mind but I really like the result. The yarns are kid mohair (blue) and a mix of wool and acrylic (black). This is the project that also got me into continental knitting which I now love !</p>
           <div class="collage">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/striped1.JPG?v=2" alt="Striped knit 1" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/striped2.JPG?v=2" alt="Striped knit 2" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">Kid Mohair + Wool/Acrylic blend</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">Intermediate</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">1 month</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">DK / Light Worsted</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Self-drafted</span>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2>Multicolor Microwaves Tee</h2>
-          <p class="section-text">Another Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/">@eatyourfiberzz</a> I made as a Christmas gift for my mother ! The yarn is MOSAIC by Lang Yarns in colorway 0001.</p>
+        <!-- Multicolor Microwaves Tee -->
+        <section class="knit-project" data-tags="tee,pattern,multicolor,yellow,orange,purple,green,wool,bulky,quick" data-project-id="multicolor-tee">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="tee">tee</span>
+            <span class="project-tag" data-tag="pattern">pattern</span>
+            <span class="project-tag" data-tag="multicolor">multicolor</span>
+            <span class="project-tag" data-tag="yellow">yellow</span>
+            <span class="project-tag" data-tag="orange">orange</span>
+            <span class="project-tag" data-tag="purple">purple</span>
+            <span class="project-tag" data-tag="green">green</span>
+            <span class="project-tag" data-tag="wool">wool</span>
+            <span class="project-tag" data-tag="bulky">bulky</span>
+            <span class="project-tag" data-tag="quick">quick</span>
+          </div>
+          <div class="section-header">
+            <h2>Multicolor Microwaves Tee</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
+          <p class="section-text">Another Microwaves tee by <a href="https://www.instagram.com/eatyourfiberzz/" target="_blank">@eatyourfiberzz</a> I made as a Christmas gift for my mother ! The yarn was super elastic so unfortunately it came out smaller than expected.</p>
           <div class="collage">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/multicolor.JPG?v=2" alt="Multicolor knit" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/multicolor1.JPG?v=2" alt="Multicolor knit 1" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">MOSAIC by Lang Yarns (colorway 0001)</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">First time</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">2 weeks</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">Bulky</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Microwaves Tee</span>
+              </div>
+              <a href="https://www.ravelry.com/patterns/library/microwaves-tee" target="_blank" class="pattern-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd"/></svg>
+                See Pattern
+              </a>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2>Pink Ginkgo Sweater</h2>
+        <!-- Pink Ginkgo Sweater -->
+        <section class="knit-project" data-tags="sweater,first time,pattern,pink,acrylic,chunky,quick" data-project-id="pink-sweater">
+          <div class="project-tags">
+            <span class="project-tag" data-tag="sweater">sweater</span>
+            <span class="project-tag" data-tag="first time">first time</span>
+            <span class="project-tag" data-tag="pattern">pattern</span>
+            <span class="project-tag" data-tag="pink">pink</span>
+            <span class="project-tag" data-tag="acrylic">acrylic</span>
+            <span class="project-tag" data-tag="chunky">chunky</span>
+            <span class="project-tag" data-tag="quick">quick</span>
+          </div>
+          <div class="section-header">
+            <h2>Pink Ginkgo Sweater</h2>
+            <button type="button" class="fav-btn" aria-label="Add to favorites" title="Add to favorites">&#9825;</button>
+          </div>
           <p class="section-text">This was my very first knitting project and the one I learnt to knit with ! It holds a special place in my heart. The yarn is a cheap acrylic yarn. </p>
           <div class="collage">
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/pink1.JPG?v=2" alt="Pink knit 1" /></div>
             <div class="img-wrap"><span class="img-skeleton" aria-hidden="true"></span><img src="./images/images/pink2.JPG?v=2" alt="Pink knit 2" /></div>
           </div>
+          <div class="project-info">
+            <div class="project-details">
+              <div class="project-detail"><span class="project-detail-label">Yarn:</span> <span class="project-detail-value">Knitty 6 by DMC</span></div>
+              <div class="project-detail"><span class="project-detail-label">Difficulty:</span> <span class="project-detail-value">First time</span></div>
+              <div class="project-detail"><span class="project-detail-label">Time:</span> <span class="project-detail-value">3 weeks</span></div>
+              <div class="project-detail"><span class="project-detail-label">Yarn weight:</span> <span class="project-detail-value">Chunky / Heavy worsted</span></div>
+            </div>
+            <div class="pattern-row">
+              <div class="pattern-info">
+                <span class="project-detail-label">Pattern:</span>
+                <span class="project-detail-value">Ginkgo Sweater</span>
+              </div>
+              <a href="https://www.ravelry.com/patterns/library/ginkgo-sweater-2" target="_blank" class="pattern-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd"/></svg>
+                See Pattern
+              </a>
+            </div>
+          </div>
         </section>
+
+        <!-- No results message (hidden by default) -->
+        <div class="no-results" id="no-results" style="display: none;">
+          <p>No projects match the selected tags.</p>
+          <button type="button" id="clear-from-no-results">Show all projects</button>
+        </div>
       </main>
 
       <footer>
@@ -482,10 +1279,323 @@
 
   <script>
     (function () {
-      // Skeleton: add .loaded when each image loads (or fails, so we don't stay stuck)
+      // ========== FAVORITES SYSTEM ==========
+      
+      var STORAGE_KEY = 'happyknits-favorites';
+      
+      // Load favorites from localStorage
+      function loadFavorites() {
+        try {
+          var stored = localStorage.getItem(STORAGE_KEY);
+          return stored ? JSON.parse(stored) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+      
+      // Save favorites to localStorage
+      function saveFavorites(favs) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+        } catch (e) {
+          console.warn('Could not save favorites to localStorage');
+        }
+      }
+      
+      var favorites = loadFavorites();
+      var showingFavoritesOnly = false;
+      var favFilterBtn = document.getElementById('fav-filter');
+      var favCountSpan = document.getElementById('fav-count');
+      
+      // Update favorite count display
+      function updateFavCount() {
+        favCountSpan.textContent = '(' + favorites.length + ')';
+      }
+      
+      // Check if a project is favorited
+      function isFavorite(projectId) {
+        return favorites.indexOf(projectId) !== -1;
+      }
+      
+      // Toggle favorite status
+      function toggleFavorite(projectId, btn) {
+        var index = favorites.indexOf(projectId);
+        if (index === -1) {
+          // Add to favorites
+          favorites.push(projectId);
+          btn.classList.add('is-fav');
+          btn.innerHTML = '&#9829;'; // Filled heart
+          btn.setAttribute('aria-label', 'Remove from favorites');
+          btn.setAttribute('title', 'Remove from favorites');
+        } else {
+          // Remove from favorites
+          favorites.splice(index, 1);
+          btn.classList.remove('is-fav');
+          btn.innerHTML = '&#9825;'; // Empty heart
+          btn.setAttribute('aria-label', 'Add to favorites');
+          btn.setAttribute('title', 'Add to favorites');
+        }
+        saveFavorites(favorites);
+        updateFavCount();
+        
+        // If showing favorites only, re-filter
+        if (showingFavoritesOnly) {
+          filterProjects();
+        }
+      }
+      
+      // Initialize favorite buttons
+      function initFavoriteButtons() {
+        document.querySelectorAll('.knit-project').forEach(function(project) {
+          var projectId = project.dataset.projectId;
+          var btn = project.querySelector('.fav-btn');
+          if (!btn || !projectId) return;
+          
+          // Set initial state
+          if (isFavorite(projectId)) {
+            btn.classList.add('is-fav');
+            btn.innerHTML = '&#9829;';
+            btn.setAttribute('aria-label', 'Remove from favorites');
+            btn.setAttribute('title', 'Remove from favorites');
+          }
+          
+          // Add click handler
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleFavorite(projectId, btn);
+          });
+        });
+        updateFavCount();
+      }
+      
+      // ========== TAG FILTERING SYSTEM ==========
+      
+      // Get all projects and store them as an array for filtering
+      var allProjects = Array.from(document.querySelectorAll('.knit-project'));
+      var totalProjects = allProjects.length;
+      
+      // Active tags (selected filters)
+      var activeTags = [];
+      
+      // DOM elements for filtering (exclude the favorites filter button)
+      var filterTagButtons = document.querySelectorAll('.filter-tag:not(.fav-filter)');
+      var clearButton = document.getElementById('clear-filters');
+      var clearFromNoResults = document.getElementById('clear-from-no-results');
+      var filterStatus = document.getElementById('filter-status');
+      var noResultsDiv = document.getElementById('no-results');
+      
+      // Filter projects based on active tags and favorites
+      function filterProjects() {
+        var visibleCount = 0;
+        
+        allProjects.forEach(function(project) {
+          // Get the tags for this project
+          var projectTags = project.dataset.tags ? project.dataset.tags.split(',') : [];
+          var projectId = project.dataset.projectId;
+          
+          // Check if project has ALL active tags (AND logic)
+          var matchesAllTags = activeTags.every(function(tag) {
+            return projectTags.includes(tag);
+          });
+          
+          // Check favorites filter
+          var matchesFavorites = !showingFavoritesOnly || isFavorite(projectId);
+          
+          // Show/hide based on match
+          if ((activeTags.length === 0 || matchesAllTags) && matchesFavorites) {
+            project.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            project.classList.add('hidden');
+          }
+        });
+        
+        // Update status text
+        updateFilterStatus(visibleCount);
+        
+        // Show/hide no results message
+        noResultsDiv.style.display = visibleCount === 0 ? 'block' : 'none';
+        
+        // Enable/disable clear button
+        clearButton.disabled = activeTags.length === 0 && !showingFavoritesOnly;
+        
+        // Update lightbox gallery to only include visible images
+        updateLightboxGallery();
+      }
+      
+      // Update the filter status text
+      function updateFilterStatus(visibleCount) {
+        if (activeTags.length === 0 && !showingFavoritesOnly) {
+          filterStatus.textContent = 'Showing all ' + totalProjects + ' projects';
+        } else {
+          var filters = [];
+          if (showingFavoritesOnly) filters.push('favorites');
+          if (activeTags.length > 0) {
+            var tagText = activeTags.length === 1 ? '1 tag' : activeTags.length + ' tags';
+            filters.push(tagText);
+          }
+          filterStatus.textContent = 'Showing ' + visibleCount + ' of ' + totalProjects + ' projects (' + filters.join(' + ') + ')';
+        }
+      }
+      
+      // Toggle a tag filter
+      function toggleTag(tag) {
+        var index = activeTags.indexOf(tag);
+        if (index === -1) {
+          // Add tag
+          activeTags.push(tag);
+        } else {
+          // Remove tag
+          activeTags.splice(index, 1);
+        }
+        
+        // Update button states
+        filterTagButtons.forEach(function(btn) {
+          if (btn.dataset.tag === tag) {
+            btn.classList.toggle('active', activeTags.includes(tag));
+          }
+        });
+        
+        // Re-filter projects
+        filterProjects();
+      }
+      
+      // Close all dropdowns (defined here so clearAllFilters can use it)
+      var filterGroups = document.querySelectorAll('.filter-group');
+      var openDropdown = null;
+      
+      function closeAllDropdowns() {
+        filterGroups.forEach(function(g) {
+          g.querySelector('.filter-group-toggle').classList.remove('is-open');
+          g.querySelector('.filter-dropdown').classList.remove('is-open');
+        });
+        openDropdown = null;
+      }
+      
+      // Clear all filters
+      function clearAllFilters() {
+        activeTags = [];
+        showingFavoritesOnly = false;
+        filterTagButtons.forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        favFilterBtn.classList.remove('active');
+        closeAllDropdowns();
+        filterProjects();
+        // Clear badges
+        document.querySelectorAll('.filter-group-toggle .active-count').forEach(function(badge) {
+          badge.remove();
+        });
+      }
+      
+      // Add click handlers to filter tag buttons
+      filterTagButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          toggleTag(this.dataset.tag);
+        });
+      });
+      
+      // Add click handler to clear button
+      clearButton.addEventListener('click', clearAllFilters);
+      
+      // Add click handler to "Show all projects" button in no-results
+      clearFromNoResults.addEventListener('click', clearAllFilters);
+      
+      // Add click handler to favorites filter button
+      favFilterBtn.addEventListener('click', function() {
+        showingFavoritesOnly = !showingFavoritesOnly;
+        favFilterBtn.classList.toggle('active', showingFavoritesOnly);
+        filterProjects();
+      });
+      
+      // ========== DROPDOWN FILTER GROUPS ==========
+      
+      // Toggle dropdown
+      function toggleDropdown(group) {
+        var toggle = group.querySelector('.filter-group-toggle');
+        var dropdown = group.querySelector('.filter-dropdown');
+        var isOpen = dropdown.classList.contains('is-open');
+        
+        // Close any open dropdown
+        closeAllDropdowns();
+        
+        // If it wasn't open, open it
+        if (!isOpen) {
+          toggle.classList.add('is-open');
+          dropdown.classList.add('is-open');
+          openDropdown = group;
+        }
+      }
+      
+      // Update active count badges on group toggles
+      function updateGroupBadges() {
+        filterGroups.forEach(function(group) {
+          var toggle = group.querySelector('.filter-group-toggle');
+          var tags = group.querySelectorAll('.filter-tag');
+          var activeCount = 0;
+          
+          tags.forEach(function(tag) {
+            if (activeTags.includes(tag.dataset.tag)) {
+              activeCount++;
+            }
+          });
+          
+          // Remove existing badge
+          var existingBadge = toggle.querySelector('.active-count');
+          if (existingBadge) existingBadge.remove();
+          
+          // Add badge if there are active tags
+          if (activeCount > 0) {
+            var badge = document.createElement('span');
+            badge.className = 'active-count';
+            badge.textContent = activeCount;
+            toggle.appendChild(badge);
+          }
+        });
+      }
+      
+      // Add click handlers to group toggles
+      filterGroups.forEach(function(group) {
+        var toggle = group.querySelector('.filter-group-toggle');
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleDropdown(group);
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (openDropdown && !openDropdown.contains(e.target)) {
+          closeAllDropdowns();
+        }
+      });
+      
+      // Update badges when tags change (modify toggleTag)
+      var originalToggleTag = toggleTag;
+      toggleTag = function(tag) {
+        originalToggleTag(tag);
+        updateGroupBadges();
+      };
+      
+      // Make project tags clickable too
+      document.querySelectorAll('.project-tag').forEach(function(tag) {
+        tag.addEventListener('click', function() {
+          var tagValue = this.dataset.tag;
+          if (tagValue) {
+            // If tag is not already active, add it
+            if (!activeTags.includes(tagValue)) {
+              toggleTag(tagValue);
+            }
+          }
+        });
+      });
+
+      // ========== IMAGE LOADING SKELETON ==========
+      
       function markLoaded(wrap) {
         if (wrap && !wrap.classList.contains('loaded')) wrap.classList.add('loaded');
       }
+      
       document.querySelectorAll('.collage .img-wrap').forEach(function (wrap) {
         var img = wrap.querySelector('img');
         if (!img) return;
@@ -496,23 +1606,41 @@
           img.addEventListener('error', function () { markLoaded(wrap); });
         }
       });
-      // Fallback: show images even if load/error never fire (e.g. slow or cached)
+      
+      // Fallback: show images even if load/error never fire
       setTimeout(function () {
         document.querySelectorAll('.collage .img-wrap:not(.loaded)').forEach(function (wrap) {
           markLoaded(wrap);
         });
       }, 2500);
 
+      // ========== LIGHTBOX ==========
+      
       var lightbox = document.getElementById('lightbox');
       var lightboxImg = lightbox.querySelector('.lightbox-content img');
       var btnClose = lightbox.querySelector('.lightbox-close');
       var btnPrev = lightbox.querySelector('.lightbox-prev');
       var btnNext = lightbox.querySelector('.lightbox-next');
       var backdrop = lightbox.querySelector('.lightbox-backdrop');
-      var galleryImages = document.querySelectorAll('.collage img');
+      var galleryImages = [];
       var currentIndex = 0;
 
+      // Update the gallery to only include visible images
+      function updateLightboxGallery() {
+        galleryImages = Array.from(document.querySelectorAll('.knit-project:not(.hidden) .collage img'));
+        
+        // Re-bind click handlers
+        document.querySelectorAll('.collage img').forEach(function(img) {
+          img.onclick = null;
+        });
+        
+        galleryImages.forEach(function (img, i) {
+          img.addEventListener('click', function () { openLightbox(i); });
+        });
+      }
+
       function showImage(index) {
+        if (galleryImages.length === 0) return;
         if (index < 0) index = galleryImages.length - 1;
         if (index >= galleryImages.length) index = 0;
         currentIndex = index;
@@ -543,17 +1671,18 @@
         if (e.key === 'ArrowRight') { e.preventDefault(); showImage(currentIndex + 1); }
       }
 
-      galleryImages.forEach(function (img, i) {
-        img.addEventListener('click', function () { openLightbox(i); });
-      });
+      // Initial gallery setup
+      updateLightboxGallery();
 
       btnClose.addEventListener('click', closeLightbox);
       backdrop.addEventListener('click', closeLightbox);
       btnPrev.addEventListener('click', function (e) { e.stopPropagation(); showImage(currentIndex - 1); });
       btnNext.addEventListener('click', function (e) { e.stopPropagation(); showImage(currentIndex + 1); });
 
-      // Back to top
+      // ========== BACK TO TOP ==========
+      
       var backToTop = document.getElementById('back-to-top');
+      
       function toggleBackToTop() {
         if (window.scrollY > 300) {
           backToTop.classList.add('is-visible');
@@ -561,12 +1690,78 @@
           backToTop.classList.remove('is-visible');
         }
       }
+      
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      
       window.addEventListener('scroll', toggleBackToTop);
       backToTop.addEventListener('click', scrollToTop);
       toggleBackToTop();
+      
+      // ========== INITIALIZE FAVORITES ==========
+      initFavoriteButtons();
+
+      // ========== ANIMATED STATS COUNTER ==========
+      
+      var statsSection = document.getElementById('stats-section');
+      var statNumbers = document.querySelectorAll('.stat-number');
+      var statsAnimated = false;
+      
+      // Animate a single counter from 0 to target
+      function animateCounter(element) {
+        var target = parseInt(element.dataset.target, 10);
+        var duration = 1500; // Animation duration in ms
+        var startTime = null;
+        
+        function step(currentTime) {
+          if (!startTime) startTime = currentTime;
+          var progress = Math.min((currentTime - startTime) / duration, 1);
+          
+          // Ease-out function for smooth deceleration
+          var easeOut = 1 - Math.pow(1 - progress, 3);
+          var currentValue = Math.floor(easeOut * target);
+          
+          element.textContent = currentValue;
+          
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            element.textContent = target; // Ensure final value is exact
+          }
+        }
+        
+        requestAnimationFrame(step);
+      }
+      
+      // Animate all counters
+      function animateAllCounters() {
+        if (statsAnimated) return; // Only animate once
+        statsAnimated = true;
+        
+        statNumbers.forEach(function(stat) {
+          animateCounter(stat);
+        });
+      }
+      
+      // Use IntersectionObserver to detect when stats section is visible
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              animateAllCounters();
+              observer.unobserve(entry.target); // Stop observing after animation
+            }
+          });
+        }, {
+          threshold: 0.5 // Trigger when 50% of the element is visible
+        });
+        
+        observer.observe(statsSection);
+      } else {
+        // Fallback for older browsers: animate immediately
+        animateAllCounters();
+      }
     })();
   </script>
 
